@@ -4,6 +4,11 @@ body {
     font-family: colfax, helvetica, arial, sans-serif;
 }
 
+#close {
+  position:absolute;
+  left: 21em;
+}
+
 p.main {
   font-size: 24px;
 }
@@ -20,15 +25,41 @@ p.main {
     position: absolute;
     left: 0px;
     width: 400px;
-    top: 0;
-    bottom: 0;
+    top: 30px;
+    bottom: 0px;
     overflow-y: auto;
-    padding: 20px;
     font-size: 16px;
 }
 
 .legend {
   position: absolute;
-  background-color: #fff;
+  left: 500px;
+  top: 10px;
   z-index: 2000;
+  font-size: 1.5em;
+}
+
+.legend-colors {
+  display: inline-block;
+    width: 10px;
+    height: 5px;
+    padding: 10px;
+    position: relative;
+    border:1px solid #000;
+}
+
+#monday-color {
+  background-color: #8dd3c7;
+}
+#tuesday-color {
+  background-color: #ffffb3;
+}
+#wednesday-color {
+  background-color: #bebada;
+}
+#thursday-color {
+  background-color: #fb8072;
+}
+#friday-color {;
+  background-color: #80b1d3;
 }

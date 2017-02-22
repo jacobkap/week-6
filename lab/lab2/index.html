@@ -26,12 +26,32 @@
         <p>Please be sure to leave your garbage outside on <span class="day-of-week">
         Day of Week</span>. If this week is a federal holiday, leave your
         garbage outside on the following day.</p>
+        <p id = "ID"></p>
       </div>
+
     </div>
+
+    <button id = "close">Close</button>
     <!-- Map -->
     <div id="map" class="map"></div>
     <!-- Legend -->
-    <div class="legend"></div>
+    <div class="legend">
+
+      <div class = legend-colors id="monday-color"></div>
+      <span><label for="#monday-color">Monday</label></span>
+      <br>
+      <div class = legend-colors id="tuesday-color"></div>
+      <span><label for="#tuesday-color">Tuesday</label></span>
+      <br>
+      <div class = legend-colors id="wednesday-color"></div>
+      <span><label for="#wednesday-color">Wednesday</label></span>
+      <br>
+      <div class = legend-colors id="thursday-color"></div>
+      <span><label for="#thursday-color">Thursday</label></span>
+      <br>
+      <div class = legend-colors id="friday-color"></div>
+      <span><label for="#friday-color">Friday</label></span>
+    </div>
     <!-- Javascript Imports -->
     <script src="js/jquery-2.2.0.js"></script>
     <script src="js/underscore.js"></script>

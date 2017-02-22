@@ -32,3 +32,7 @@ p.main {
   background-color: #fff;
   z-index: 2000;
 }
+
+#monday-color {
+  background: #13b4ff;
+}

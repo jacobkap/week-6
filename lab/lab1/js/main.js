@@ -17,8 +17,13 @@ downloadData.done(function(data) {
   /* ================================
   Start your code here
   ================================ */
-
+ _.each(parsedData, function(item) {
+   console.log(item.NAME, item.NOTES);
+   var myHTML = '<div class = "item".<h3>' + item.Name + '</h3><p>' + item.NOTES + '</p></div>';
+   $(".day-of-week").append(myHTML);
+ });
   /* ================================
   End your code here
   ================================ */
+
 });

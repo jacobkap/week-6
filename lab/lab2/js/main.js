@@ -123,11 +123,24 @@ of the application to report this information.
 
 ===================== */
 
-var dataset = "https://raw.githubusercontent.com/CPLN692-MUSA611/datasets/master/geojson/philadelphia-garbage-collection-boundaries.geojson"
+var dataset = "https://raw.githubusercontent.com/CPLN692-MUSA611/datasets/master/geojson/philadelphia-garbage-collection-boundaries.geojson";
 var featureGroup;
 
 var myStyle = function(feature) {
-  return {};
+var basicObject = {
+  fillOpacity: 1,
+};
+            switch (feature.properties.COLLDAY) {
+              case 'MON': $.extend(basicObject, {fillColor: "#8dd3c7"}); break;
+              case 'TUE': $.extend(basicObject, {fillColor: "#ffffb3"}); break;
+              case 'WED': $.extend(basicObject, {fillColor: "#bebada"}); break;
+              case 'THU': $.extend(basicObject, {fillColor: "#fb8072  "}); break;
+              case 'FRI': $.extend(basicObject, {fillColor: "#80b1d3"}); break;
+              default : $.extend(basicObject, {fillColor: "#fdb462"}); break;
+          }
+
+          return(basicObject);
+
 };
 
 var showResults = function() {
@@ -146,18 +159,39 @@ var showResults = function() {
 
 var eachFeatureFunction = function(layer) {
   layer.on('click', function (event) {
-    /* =====================
-    The following code will run every time a layer on the map is clicked.
-    Check out layer.feature to see some useful data about the layer that
-    you can use in your application.
-    ===================== */
     console.log(layer.feature);
+    console.log(layer._leaflet_id);
+    console.log(layer.getLayerId);
+
+    var weekday = "Monday";
+    if (layer.feature.properties.COLLDAY == "TUE") {
+      weekday = "Tuesday";
+    } else if (layer.feature.properties.COLLDAY == "WED") {
+      weekday = "Wednesday";
+    }
+    else if (layer.feature.properties.COLLDAY == "THU") {
+      weekday = "Thursday";
+    }
+    else if (layer.feature.properties.COLLDAY == "FRI") {
+      weekday = "Friday";
+    }
+
+
+    var myHTML = '<span class="day-of-week">' + weekday +
+                 '</span>';
+    $("span.day-of-week").replaceWith(myHTML);
+
+    $("#ID").replaceWith('<p id = "ID">The leaflet layer ID is ' + layer._leaflet_id + '</p>');
+
     showResults();
   });
 };
 
 var myFilter = function(feature) {
+
+  if (feature.properties.COLLDAY.length > 1) {
   return true;
+} else {return false;}
 };
 
 $(document).ready(function() {
@@ -172,3 +206,10 @@ $(document).ready(function() {
     featureGroup.eachLayer(eachFeatureFunction);
   });
 });
+
+var closeResults = function() {
+  $('#intro').show();
+  $('#results').hide();
+};
+
+$('#close').click(closeResults);
